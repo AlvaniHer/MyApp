@@ -20,12 +20,14 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,7 +41,7 @@ fun Login(auth: FirebaseAuth, onLoginOk :() -> Unit,navegaARegistro:() -> Unit,v
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
     var muestraDialogoError by remember { mutableStateOf(false) }
-
+    val tieneError by viewModel.emailError.collectAsState() //esto es para ver si da error el email
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -71,9 +73,15 @@ fun Login(auth: FirebaseAuth, onLoginOk :() -> Unit,navegaARegistro:() -> Unit,v
                 email=it
                 viewModel.validaremail(it) //verificar si es un email
             },
+            modifier = Modifier.testTag("campo_email"), //esto es para el test
             // Aquí se cumple la instrucción: Mostrar contador de caracteres
             label = { Text("Email") },
+            isError = tieneError // Si es true, el campo se pone rojo
         )
+        //Mostrar un texto rojo si hay error
+        if (tieneError) {
+            Text("El email debe contener una @", color = MaterialTheme.colorScheme.error)
+        }
         Spacer(Modifier.height(16.dp))
         //espacio contraseña
         OutlinedTextField(

@@ -20,6 +20,21 @@ class TiendaViewModel : ViewModel() {
     * Se usa [MutableStateFlow] para que la lista pueda actualizarse si fuera necesario.
     * El guion bajo (_) indica que es una variable "secreta" que solo este archivo puede modificar.
     */
+   // El estado puede ser: "INICIO", "CARGANDO", "EXITO" o un mensaje de ERROR
+   private val _estadoLogin = MutableStateFlow("INICIO")
+    val estadoLogin = _estadoLogin.asStateFlow()
+    // Función para loguear (con Firebase)
+    fun loginUsuario(auth: FirebaseAuth, email: String, pass: String) {
+        _estadoLogin.value = "CARGANDO"
+        auth.signInWithEmailAndPassword(email, pass)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    _estadoLogin.value = "EXITO"
+                } else {
+                    _estadoLogin.value = task.exception?.message ?: "Error"
+                }
+            }
+    }
    private val _emailError = MutableStateFlow(false)
     val emailError = _emailError.asStateFlow()
     fun validaremail(email: String){

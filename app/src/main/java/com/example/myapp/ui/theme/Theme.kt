@@ -22,7 +22,8 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = titulos,     // Azul títulos
     onTertiary = blanco,
     surface = fondo,        // Color de las superficies (como Cards)
-    onSurface = negro
+    onSurface = negro,
+    error=red
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -35,7 +36,8 @@ private val LightColorScheme = lightColorScheme(
     tertiary = titulos,
     onTertiary = blanco,
     surface = fondo,
-    onSurface = negro
+    onSurface = negro,
+    error=red
 )
 
 @Composable
