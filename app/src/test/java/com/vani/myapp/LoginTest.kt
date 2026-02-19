@@ -2,7 +2,7 @@ package com.vani.myapp
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
-
+//prueba de unidad
 class LoginTest {
 
     @Test

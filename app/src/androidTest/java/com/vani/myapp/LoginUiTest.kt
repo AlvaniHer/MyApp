@@ -6,12 +6,12 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import com.vani.myapp.Pantallas.Login
+import com.vani.myapp.ui.Pantallas.Login
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import org.junit.Rule
 import org.junit.Test
-
+//prueba IU
 class LoginUiTest {
 
     @get:Rule
@@ -39,6 +39,7 @@ class LoginUiTest {
             .assertIsDisplayed()
         // O simplemente verificar que el texto sigue ahí pero con el estado de error activo
     }
+    //test de logueo
 
     @Test
     fun cuandoLoginEsExitoso_LlamaAOnLoginOk() {
