@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapp"
+    namespace = "com.vani.myapp"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.myapp"
+        applicationId = "com.vani.myapp"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -45,6 +45,13 @@ android {
 }
 
 dependencies {
+    //dependencias para un reproductor de video
+    implementation("androidx.media3:media3-exoplayer:1.5.0")
+    implementation("androidx.media3:media3-ui:1.5.0")
+    // Esta es la librería que contiene 'storage' y 'ktx'
+    implementation(libs.firebase.storage.ktx)
+    // Esta es la que permite cargar las imágenes de las URLs
+    implementation("io.coil-kt:coil-compose:2.6.0")
     //firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
@@ -69,6 +76,7 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.ui.test.junit4)
+    implementation(libs.firebase.storage.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
