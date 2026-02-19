@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performTextInput
 import com.vani.myapp.ui.Pantallas.Login
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import com.vani.myapp.viewmodel.LoginViewModel
 import org.junit.Rule
 import org.junit.Test
 //prueba IU
@@ -23,7 +24,7 @@ class LoginUiTest {
         composeTestRule.setContent {
             //el nombre de la función @Composable del Login
             Login(
-                viewModel = TiendaViewModel(),
+                viewModel = LoginViewModel(),
                 auth = Firebase.auth, // conductor
                 onLoginOk = { },      // destino, vacio en el test
                 navegaARegistro = { } //mapa vacio en el test
@@ -47,7 +48,7 @@ class LoginUiTest {
 
         composeTestRule.setContent {
             Login(
-                viewModel = TiendaViewModel(),
+                viewModel = LoginViewModel(),
                 auth = Firebase.auth,
                 //si el login funciona, cambiaremos esta variable a true
                 onLoginOk = { loginExitoso = true },

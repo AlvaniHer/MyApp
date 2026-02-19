@@ -1,5 +1,7 @@
 package com.vani.myapp
 
+
+import com.vani.myapp.viewmodel.LoginViewModel
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 //prueba de unidad
@@ -8,7 +10,7 @@ class LoginTest {
     @Test
     fun validarEmail_cuandoNoTieneArroba_retornaTrue() {
         //Dado que tenemos el ViewModel y un email sin @)
-        val viewModel = TiendaViewModel()
+        val viewModel = LoginViewModel()
         val emailInvalido = "usuario-gmail.com" //es una trampa para probar
 
         //cuando llamamos a la función de validar email (que vea si tiene @)
@@ -22,7 +24,7 @@ class LoginTest {
     @Test
     fun validarEmail_cuandoEsCorrecto_retornaFalse() {
         //Un email que sí está bien
-        val viewModel = TiendaViewModel()
+        val viewModel = LoginViewModel()
         val emailValido = "admin@test.com"
 
         //validamos
